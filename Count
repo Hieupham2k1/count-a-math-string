@@ -1,0 +1,48 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+int main()
+{  float b[100];
+  int dar=0, ds=0, i, j, len;
+	char a[100], temp[100], op[100];
+cout<<"nhap day ki tu:\n";
+cin>>a;
+for(i=0;i<20;i++){
+	if(a[i]=='+'||a[i]=='*'||a[i]=='-'||a[i]=='/'){
+		op[ds]=a[i];
+		ds++;
+		for(j=0;j<i;j++)
+		temp[j]=a[j];
+		for(j=0;j<20;j++)
+		a[j]=a[j+i+1];
+		b[dar]=atof(temp);
+		dar++;
+		i=0;
+	}
+}
+b[dar]=atof(a);
+len=strlen(op);
+j=0;
+for(i=0;i<=len;i++){
+	if(op[i]=='/'){
+	b[i+1]=(float)1/b[i+1];
+	op[i]='*';
+	}	
+	if(op[i]=='-'){
+	b[i+1]=-b[i+1];
+	op[i]='+';	
+	}
+}
+for(i=0;i<=len;i++){
+if(op[i]=='*'){
+	b[i+1]=(float)b[i]*b[i+1];
+	b[i]=0;
+	}
+}
+//console
+cout<<"ket qua\n";
+for(i=0;i<=strlen(op);i++)
+b[i+1]=b[i]+b[i+1];
+cout<<b[i];
+}
